@@ -1,5 +1,8 @@
 enum ActionKind
 {
    ACTIVITY,
-   ANIMATION
+   ANIMATION;
+
+
+
 }

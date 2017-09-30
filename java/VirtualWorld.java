@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 import processing.core.*;
 
@@ -73,11 +75,11 @@ public final class VirtualWorld
       long time = System.currentTimeMillis();
       if (time >= next_time)
       {
-         Functions.updateOnTime(this.scheduler, time);
+         this.scheduler.updateOnTime(time);
          next_time = time + TIMER_ACTION_PERIOD;
       }
 
-      Functions.drawViewport(view);
+      view.drawViewport();
    }
 
    public void keyPressed()
@@ -102,14 +104,14 @@ public final class VirtualWorld
                dx = 1;
                break;
          }
-         Functions.shiftView(view, dx, dy);
+         view.shiftView(dx, dy);
       }
    }
 
    public static Background createDefaultBackground(ImageStore imageStore)
    {
       return new Background(DEFAULT_IMAGE_NAME,
-         Functions.getImageList(imageStore, DEFAULT_IMAGE_NAME));
+         imageStore.getImageList(DEFAULT_IMAGE_NAME));
    }
 
    public static PImage createImageColored(int width, int height, int color)
@@ -124,7 +126,7 @@ public final class VirtualWorld
       return img;
    }
 
-   private static void loadImages(String filename, ImageStore imageStore,
+   public static void loadImages(String filename, ImageStore imageStore,
       PApplet screen)
    {
       try
@@ -138,7 +140,7 @@ public final class VirtualWorld
       }
    }
 
-   public static void loadWorld(WorldModel world, String filename,
+   public void loadWorld(WorldModel world, String filename,
       ImageStore imageStore)
    {
       try
@@ -152,14 +154,15 @@ public final class VirtualWorld
       }
    }
 
-   public static void scheduleActions(WorldModel world,
+   public void scheduleActions(WorldModel world,
       EventScheduler scheduler, ImageStore imageStore)
    {
       for (Entity entity : world.entities)
       {
-         Functions.scheduleActions(entity, scheduler, world, imageStore);
+         entity.scheduleActions(scheduler, world, imageStore);
       }
    }
+
 
    public static void parseCommandLine(String [] args)
    {
@@ -185,4 +188,6 @@ public final class VirtualWorld
       parseCommandLine(args);
       PApplet.main(VirtualWorld.class);
    }
+
+
 }
