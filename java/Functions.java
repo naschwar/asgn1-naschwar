@@ -70,13 +70,6 @@ final class Functions
 
 
 
-   public static Entity createVein(String id, Point position, int actionPeriod,
-                                   List<PImage> images)
-   {
-      return new Entity(EntityKind.VEIN, id, position, images, 0, 0,
-              actionPeriod, 0);
-   }
-
    public static boolean parseOre(String [] properties, WorldModel world,
                                   ImageStore imageStore)
    {
@@ -93,26 +86,6 @@ final class Functions
       return properties.length == ORE_NUM_PROPERTIES;
    }
 
-
-
-   public static PImage getCurrentImage(Object entity)
-   {
-      if (entity instanceof Background)
-      {
-         return ((Background)entity).images
-            .get(((Background)entity).imageIndex);
-      }
-      else if (entity instanceof Entity)
-      {
-         return ((Entity)entity).images.get(((Entity)entity).imageIndex);
-      }
-      else
-      {
-         throw new UnsupportedOperationException(
-            String.format("getCurrentImage not supported for %s",
-            entity));
-      }
-   }
 
 
    public static void loadImages(Scanner in, ImageStore imageStore,
@@ -285,7 +258,7 @@ final class Functions
       {
          Point pt = new Point(Integer.parseInt(properties[VEIN_COL]),
                  Integer.parseInt(properties[VEIN_ROW]));
-         Entity entity = createVein(properties[VEIN_ID],
+         Entity entity = Entity.createVein(properties[VEIN_ID],
                  pt,
                  Integer.parseInt(properties[VEIN_ACTION_PERIOD]),
                  imageStore.getImageList(VEIN_KEY));

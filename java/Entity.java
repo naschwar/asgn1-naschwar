@@ -229,6 +229,13 @@ final class Entity
       }
    }
 
+   public static Entity createVein(String id, Point position, int actionPeriod,
+                                   List<PImage> images)
+   {
+      return new Entity(EntityKind.VEIN, id, position, images, 0, 0,
+              actionPeriod, 0);
+   }
+
    public boolean transformNotFull(WorldModel world,
                                    EventScheduler scheduler, ImageStore imageStore)
    {
