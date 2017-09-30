@@ -270,7 +270,7 @@ final class Entity
 
          if (moveToOreBlob(world, blobTarget.get(), scheduler))
          {
-            Entity quake = Point.createQuake(tgtPos,
+            Entity quake = tgtPos.createQuake(
                     imageStore.getImageList(QUAKE_KEY));
 
             world.addEntity(quake);

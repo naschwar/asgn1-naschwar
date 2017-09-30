@@ -12,11 +12,11 @@ final class Viewport
    }
    public Point viewportToWorld( int col, int row)
    {
-      return new Point(col + col, row + row);
+      return new Point(col + this.col, row + this.row);
    }
    public Point worldToViewport(int col, int row)
    {
-      return new Point(col - col, row - row);
+      return new Point(col - this.col, row - this.row);
    }
    public boolean contains(Point p)
    {

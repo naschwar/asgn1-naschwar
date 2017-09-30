@@ -78,9 +78,9 @@ final class Point
          return Optional.of(nearest);
       }
    }
-   public static Entity createQuake(Point position, List<PImage> images)
+   public Entity createQuake(List<PImage> images)
    {
-      return new Entity(EntityKind.QUAKE, QUAKE_ID, position, images,
+      return new Entity(EntityKind.QUAKE, QUAKE_ID, this, images,
               0, 0, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
    }
 }

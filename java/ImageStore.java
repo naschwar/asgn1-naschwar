@@ -21,12 +21,6 @@ final class ImageStore
    {
       return images.getOrDefault(key, defaultImages);
    }
-
-
-
-
-
-
    public static void setAlpha(PImage img, int maskColor, int alpha)
    {
       int alphaValue = alpha << 24;
