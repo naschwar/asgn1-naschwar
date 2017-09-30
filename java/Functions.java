@@ -39,9 +39,9 @@ final class Functions
 
 
    public static final int KEYED_IMAGE_MIN = 5;
-   private static final int KEYED_RED_IDX = 2;
-   private static final int KEYED_GREEN_IDX = 3;
-   private static final int KEYED_BLUE_IDX = 4;
+   public static final int KEYED_RED_IDX = 2;
+   public static final int KEYED_GREEN_IDX = 3;
+   public static final int KEYED_BLUE_IDX = 4;
 
    public static final int PROPERTY_KEY = 0;
 
@@ -70,8 +70,8 @@ final class Functions
 
 
 
-   public static boolean parseOre(String [] properties, WorldModel world,
-                                  ImageStore imageStore)
+   private static boolean parseOre(String[] properties, WorldModel world,
+                                   ImageStore imageStore)
    {
       if (properties.length == ORE_NUM_PROPERTIES)
       {
@@ -88,15 +88,15 @@ final class Functions
 
 
 
-   public static void loadImages(Scanner in, ImageStore imageStore,
-      PApplet screen)
+   static void loadImages(Scanner in, ImageStore imageStore,
+                          PApplet screen)
    {
       int lineNumber = 0;
       while (in.hasNextLine())
       {
          try
          {
-            processImageLine(imageStore.images, in.nextLine(), screen);
+            processImageLine(imageStore.getImages(), in.nextLine(), screen);
          }
          catch (NumberFormatException e)
          {
@@ -107,8 +107,8 @@ final class Functions
       }
    }
 
-   public static void processImageLine(Map<String, List<PImage>> images,
-      String line, PApplet screen)
+   private static void processImageLine(Map<String, List<PImage>> images,
+                                        String line, PApplet screen)
    {
       String[] attrs = line.split("\\s");
       if (attrs.length >= 2)
@@ -131,7 +131,7 @@ final class Functions
       }
    }
 
-   public static void setAlpha(PImage img, int maskColor, int alpha)
+   private static void setAlpha(PImage img, int maskColor, int alpha)
    {
       int alphaValue = alpha << 24;
       int nonAlpha = maskColor & COLOR_MASK;
@@ -149,8 +149,8 @@ final class Functions
 
 
 
-   public static List<PImage> getImages(Map<String, List<PImage>> images,
-      String key)
+   private static List<PImage> getImages(Map<String, List<PImage>> images,
+                                         String key)
    {
       List<PImage> imgs = images.get(key);
       if (imgs == null)
@@ -167,7 +167,7 @@ final class Functions
    */
 
 
-   public static void load(Scanner in, WorldModel world, ImageStore imageStore)
+   static void load(Scanner in, WorldModel world, ImageStore imageStore)
    {
       int lineNumber = 0;
       while (in.hasNextLine())
@@ -194,8 +194,8 @@ final class Functions
       }
    }
 
-   public static boolean processLine(String line, WorldModel world,
-      ImageStore imageStore)
+   private static boolean processLine(String line, WorldModel world,
+                                      ImageStore imageStore)
    {
       String[] properties = line.split("\\s");
       if (properties.length > 0)
@@ -219,8 +219,8 @@ final class Functions
 
       return false;
    }
-   public static boolean parseObstacle(String[] properties, WorldModel world,
-                                       ImageStore imageStore)
+   private static boolean parseObstacle(String[] properties, WorldModel world,
+                                        ImageStore imageStore)
    {
       if (properties.length == OBSTACLE_NUM_PROPERTIES)
       {
@@ -236,8 +236,8 @@ final class Functions
    }
 
 
-   public static boolean parseSmith(String[] properties, WorldModel world,
-                                    ImageStore imageStore)
+   private static boolean parseSmith(String[] properties, WorldModel world,
+                                     ImageStore imageStore)
    {
       if (properties.length == SMITH_NUM_PROPERTIES)
       {
@@ -251,8 +251,8 @@ final class Functions
       return properties.length == SMITH_NUM_PROPERTIES;
    }
 
-   public static boolean parseVein(String[] properties, WorldModel world,
-                                   ImageStore imageStore)
+   private static boolean parseVein(String[] properties, WorldModel world,
+                                    ImageStore imageStore)
    {
       if (properties.length == VEIN_NUM_PROPERTIES)
       {
@@ -269,8 +269,8 @@ final class Functions
    }
 
 
-   public static boolean parseBackground(String [] properties,
-      WorldModel world, ImageStore imageStore)
+   private static boolean parseBackground(String[] properties,
+                                          WorldModel world, ImageStore imageStore)
    {
       if (properties.length == BGND_NUM_PROPERTIES)
       {
@@ -284,8 +284,8 @@ final class Functions
       return properties.length == BGND_NUM_PROPERTIES;
    }
 
-   public static boolean parseMiner(String [] properties, WorldModel world,
-      ImageStore imageStore)
+   private static boolean parseMiner(String[] properties, WorldModel world,
+                                     ImageStore imageStore)
    {
       if (properties.length == MINER_NUM_PROPERTIES)
       {

@@ -7,11 +7,11 @@ import java.util.Optional;
 
 final class WorldView
 {
-   public PApplet screen;
-   public WorldModel world;
-   public int tileWidth;
-   public int tileHeight;
-   public Viewport viewport;
+   private PApplet screen;
+   private WorldModel world;
+   private int tileWidth;
+   private int tileHeight;
+   private Viewport viewport;
 
    public WorldView(int numRows, int numCols, PApplet screen, WorldModel world,
       int tileWidth, int tileHeight)
@@ -22,9 +22,9 @@ final class WorldView
       this.tileHeight = tileHeight;
       this.viewport = new Viewport(numRows, numCols);
    }
-   public void drawEntities()
+   private void drawEntities()
    {
-      for (Entity entity : this.world.entities)
+      for (Entity entity : this.world.getEntities())
       {
          Point pos = entity.position;
 
@@ -37,11 +37,11 @@ final class WorldView
       }
    }
 
-   public void drawBackground()
+   private void drawBackground()
    {
-      for (int row = 0; row < viewport.numRows; row++)
+      for (int row = 0; row < viewport.getNumRows(); row++)
       {
-         for (int col = 0; col < viewport.numCols; col++)
+         for (int col = 0; col < viewport.getNumCols(); col++)
          {
             Point worldPoint = viewport.viewportToWorld(col, row);
             Optional<PImage> image = this.world.getBackgroundImage(worldPoint);
@@ -56,15 +56,15 @@ final class WorldView
 
    public void shiftView(int colDelta, int rowDelta)
    {
-      int newCol = clamp(viewport.col + colDelta, 0,
-              world.numCols - viewport.numCols);
-      int newRow = clamp(viewport.row + rowDelta, 0,
-              world.numRows - viewport.numRows);
+      int newCol = clamp(viewport.getCol() + colDelta, 0,
+              world.getNumCols() - viewport.getNumCols());
+      int newRow = clamp(viewport.getRow() + rowDelta, 0,
+              world.getNumRows() - viewport.getNumRows());
 
       viewport.shift(newCol, newRow);
    }
 
-   public static int clamp(int value, int low, int high)
+   private static int clamp(int value, int low, int high)
    {
       return Math.min(high, Math.max(value, low));
    }

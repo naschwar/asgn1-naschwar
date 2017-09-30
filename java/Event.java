@@ -3,9 +3,9 @@ import java.util.List;
 
 final class Event
 {
-   public Action action;
-   public long time;
-   public Entity entity;
+   private Action action;
+   private long time;
+   private Entity entity;
 
 
    public Event(Action action, long time, Entity entity)
@@ -14,6 +14,18 @@ final class Event
       this.time = time;
       this.entity = entity;
    }
+   public long getTime(){
+      return time;
+   }
+
+   public Action getAction(){
+      return action;
+   }
+
+   public Entity getEntity(){
+      return entity;
+
+}
 
    }
 

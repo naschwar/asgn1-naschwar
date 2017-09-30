@@ -52,7 +52,7 @@ final class Point
 
       return deltaX * deltaX + deltaY * deltaY;
    }
-   public Optional<Entity> nearestEntity(List<Entity> entities,
+   private Optional<Entity> nearestEntity(List<Entity> entities,
                                                 Point pos)
    {
       if (entities.isEmpty())

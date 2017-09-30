@@ -2,15 +2,15 @@ import java.util.Optional;
 
 final class Action
 {
-   public ActionKind kind;
-   public Entity entity;
-   public WorldModel world;
-   public ImageStore imageStore;
-   public int repeatCount;
+   private ActionKind kind;
+   private Entity entity;
+   private WorldModel world;
+   private ImageStore imageStore;
+   private int repeatCount;
 
 
    public Action(ActionKind kind, Entity entity, WorldModel world,
-      ImageStore imageStore, int repeatCount)
+                 ImageStore imageStore, int repeatCount)
    {
       this.kind = kind;
       this.entity = entity;
@@ -35,7 +35,7 @@ final class Action
             break;
       }
    }
-   public void executeAnimationAction(EventScheduler scheduler)
+   private void executeAnimationAction(EventScheduler scheduler)
    {
       entity.nextImage();
       if (repeatCount != 1)
@@ -45,9 +45,9 @@ final class Action
       }
    }
 
-   public void executeActivityAction(EventScheduler scheduler)
+   private void executeActivityAction(EventScheduler scheduler)
    {
-      switch (entity.kind)
+      switch (entity.getKind())
       {
          case MINER_FULL:
             entity.executeMinerFullActivity(world,
@@ -82,7 +82,7 @@ final class Action
          default:
             throw new UnsupportedOperationException(
                     String.format("executeActivityAction not supported for %s",
-                            entity.kind));
+                            entity.getKind()));
       }
 
    }

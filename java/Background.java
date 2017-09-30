@@ -3,9 +3,9 @@ import processing.core.PImage;
 
 final class Background
 {
-   public String id;
-   public List<PImage> images;
-   public int imageIndex;
+   private String id;
+   private List<PImage> images;
+   private int imageIndex;
 
 
 
@@ -15,7 +15,7 @@ final class Background
       this.images = images;
    }
 
-   public Entity createOre(Point position, int actionPeriod,
+   private Entity createOre(Point position, int actionPeriod,
                                   List<PImage> images)
    {
       return new Entity(EntityKind.ORE, id, position, images, 0, 0,

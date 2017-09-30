@@ -8,10 +8,10 @@ import processing.core.PImage;
 
 final class ImageStore
 {
-   public Map<String, List<PImage>> images;
-   public List<PImage> defaultImages;
+   private Map<String, List<PImage>> images;
+   private List<PImage> defaultImages;
    public static final int COLOR_MASK = 0xffffff;
-   public ImageStore(PImage defaultImage)
+   ImageStore(PImage defaultImage)
    {
       this.images = new HashMap<>();
       defaultImages = new LinkedList<>();
@@ -21,7 +21,7 @@ final class ImageStore
    {
       return images.getOrDefault(key, defaultImages);
    }
-   public static void setAlpha(PImage img, int maskColor, int alpha)
+   private static void setAlpha(PImage img, int maskColor, int alpha)
    {
       int alphaValue = alpha << 24;
       int nonAlpha = maskColor & COLOR_MASK;
@@ -35,5 +35,9 @@ final class ImageStore
          }
       }
       img.updatePixels();
+   }
+
+   public Map<String, List<PImage>> getImages(){
+      return images;
    }
 }

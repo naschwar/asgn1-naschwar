@@ -4,12 +4,12 @@ import java.util.*;
 
 final class WorldModel
 {
-   public int numRows;
-   public int numCols;
-   public Background background[][];
-   public Entity occupancy[][];
-   public Set<Entity> entities;
-   public static final int ORE_REACH = 1;
+   private int numRows;
+   private int numCols;
+   private Background background[][];
+   private Entity occupancy[][];
+   private Set<Entity> entities;
+   private static final int ORE_REACH = 1;
 
 
    public WorldModel(int numRows, int numCols, Background defaultBackground)
@@ -25,13 +25,27 @@ final class WorldModel
          Arrays.fill(this.background[row], defaultBackground);
       }
    }
+
+   public int getNumRows(){
+      return numRows;
+   }
+
+   public int getNumCols() {
+      return numCols;
+   }
+
+   public Set<Entity> getEntities(){
+      return entities;
+   }
+
+
    public Optional<Entity> findNearest(Point pos,
                                        EntityKind kind)
    {
       List<Entity> ofType = new LinkedList<>();
       for (Entity entity : entities)
       {
-         if (entity.kind == kind)
+         if (entity.getKind() == kind)
          {
             ofType.add(entity);
          }
@@ -40,7 +54,7 @@ final class WorldModel
    }
 
 
-   public static Optional<Entity> nearestEntity(List<Entity> entities,
+   private static Optional<Entity> nearestEntity(List<Entity> entities,
                                                 Point pos)
    {
       if (entities.isEmpty())
@@ -108,7 +122,7 @@ final class WorldModel
          entity.position = pos;
       }
    }
-   public void setBackgroundCell(Point pos,
+   private void setBackgroundCell(Point pos,
                                         Background background)
    {
       this.background[pos.y][pos.x] = background;
@@ -122,7 +136,7 @@ final class WorldModel
          setBackgroundCell(pos, background);
       }
    }
-   public Entity getOccupancyCell(Point pos)
+   private Entity getOccupancyCell(Point pos)
    {
 
       return occupancy[pos.y][pos.x];
@@ -146,7 +160,7 @@ final class WorldModel
       }
    }
 
-   public void removeEntityAt(Point pos)
+   private void removeEntityAt(Point pos)
    {
       if (withinBounds(pos) && getOccupancyCell(pos) != null)
       {
@@ -175,18 +189,18 @@ final class WorldModel
       return withinBounds(pos) &&
               getOccupancyCell(pos) != null;
    }
-   public boolean withinBounds(Point pos)
+   private boolean withinBounds(Point pos)
    {
       return pos.y >= 0 && pos.y < numRows &&
               pos.x >= 0 && pos.x < numCols;
    }
 
-   public void setOccupancyCell(Point pos,
+   private void setOccupancyCell(Point pos,
                                 Entity entity)
    {
       occupancy[pos.y][pos.x] = entity;
    }
-   public  void tryAddEntity(Entity entity)
+   public void tryAddEntity(Entity entity)
    {
       if (isOccupied(entity.position))
       {
@@ -198,7 +212,7 @@ final class WorldModel
       addEntity(entity);
    }
 
-   public Background getBackgroundCell(Point pos)
+   private Background getBackgroundCell(Point pos)
    {
       return background[pos.y][pos.x];
    }
