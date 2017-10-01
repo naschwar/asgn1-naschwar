@@ -88,8 +88,8 @@ final class Functions
 
 
 
-   static void loadImages(Scanner in, ImageStore imageStore,
-                          PApplet screen)
+   public static void loadImages(Scanner in, ImageStore imageStore,
+                                 PApplet screen)
    {
       int lineNumber = 0;
       while (in.hasNextLine())
@@ -167,7 +167,7 @@ final class Functions
    */
 
 
-   static void load(Scanner in, WorldModel world, ImageStore imageStore)
+   public static void load(Scanner in, WorldModel world, ImageStore imageStore)
    {
       int lineNumber = 0;
       while (in.hasNextLine())
@@ -192,7 +192,10 @@ final class Functions
          }
          lineNumber++;
       }
+
    }
+
+
 
    private static boolean processLine(String line, WorldModel world,
                                       ImageStore imageStore)

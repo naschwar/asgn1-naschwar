@@ -21,21 +21,7 @@ final class ImageStore
    {
       return images.getOrDefault(key, defaultImages);
    }
-   private static void setAlpha(PImage img, int maskColor, int alpha)
-   {
-      int alphaValue = alpha << 24;
-      int nonAlpha = maskColor & COLOR_MASK;
-      img.format = PApplet.ARGB;
-      img.loadPixels();
-      for (int i = 0; i < img.pixels.length; i++)
-      {
-         if ((img.pixels[i] & COLOR_MASK) == nonAlpha)
-         {
-            img.pixels[i] = alphaValue | nonAlpha;
-         }
-      }
-      img.updatePixels();
-   }
+
 
    public Map<String, List<PImage>> getImages(){
       return images;

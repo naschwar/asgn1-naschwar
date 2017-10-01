@@ -52,32 +52,7 @@ final class Point
 
       return deltaX * deltaX + deltaY * deltaY;
    }
-   private Optional<Entity> nearestEntity(List<Entity> entities,
-                                                Point pos)
-   {
-      if (entities.isEmpty())
-      {
-         return Optional.empty();
-      }
-      else
-      {
-         Entity nearest = entities.get(0);
-         int nearestDistance = nearest.position.distanceSquared(pos);
 
-         for (Entity other : entities)
-         {
-            int otherDistance = other.position.distanceSquared(pos);
-
-            if (otherDistance < nearestDistance)
-            {
-               nearest = other;
-               nearestDistance = otherDistance;
-            }
-         }
-
-         return Optional.of(nearest);
-      }
-   }
    public Entity createQuake(List<PImage> images)
    {
       return new Entity(EntityKind.QUAKE, QUAKE_ID, this, images,
