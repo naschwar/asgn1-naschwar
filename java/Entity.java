@@ -18,17 +18,17 @@ final class Entity
    public static final int ORE_CORRUPT_MIN = 20000;
    public static final int ORE_CORRUPT_MAX = 30000;
 
-   private EntityKind kind;
-   private String id;
+   private final EntityKind kind;
+   private final String id;
    public Point position;
-   private List<PImage> images;
+   private final List<PImage> images;
    private int imageIndex;
-   private int resourceLimit;
+   private final int resourceLimit;
    private int resourceCount;
-   private int actionPeriod;
-   private int animationPeriod;
-   private static final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
-   private static final String QUAKE_KEY = "quake";
+   private final int actionPeriod;
+   private final int animationPeriod;
+   public static final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
+   public static final String QUAKE_KEY = "quake";
 
    public Entity(EntityKind kind, String id, Point position,
       List<PImage> images, int resourceLimit, int resourceCount,

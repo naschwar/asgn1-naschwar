@@ -4,11 +4,11 @@ import java.util.*;
 
 final class WorldModel
 {
-   private int numRows;
-   private int numCols;
-   private Background background[][];
-   private Entity occupancy[][];
-   private Set<Entity> entities;
+   private final int numRows;
+   private final int numCols;
+   private final Background background[][];
+   private final Entity occupancy[][];
+   private final Set<Entity> entities;
    private static final int ORE_REACH = 1;
 
 

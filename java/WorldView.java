@@ -7,11 +7,11 @@ import java.util.Optional;
 
 final class WorldView
 {
-   private PApplet screen;
-   private WorldModel world;
-   private int tileWidth;
-   private int tileHeight;
-   private Viewport viewport;
+   private final PApplet screen;
+   private final WorldModel world;
+   private final int tileWidth;
+   private final int tileHeight;
+   private final Viewport viewport;
 
    public WorldView(int numRows, int numCols, PApplet screen, WorldModel world,
       int tileWidth, int tileHeight)

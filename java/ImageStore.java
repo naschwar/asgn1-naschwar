@@ -8,8 +8,8 @@ import processing.core.PImage;
 
 final class ImageStore
 {
-   private Map<String, List<PImage>> images;
-   private List<PImage> defaultImages;
+   private final Map<String, List<PImage>> images;
+   private final List<PImage> defaultImages;
    public static final int COLOR_MASK = 0xffffff;
    ImageStore(PImage defaultImage)
    {

@@ -3,9 +3,9 @@ import java.util.List;
 
 final class Event
 {
-   private Action action;
-   private long time;
-   private Entity entity;
+   private final Action action;
+   private final long time;
+   private final Entity entity;
 
 
    public Event(Action action, long time, Entity entity)
