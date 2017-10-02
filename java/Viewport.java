@@ -44,7 +44,7 @@ final class Viewport
 
    public void shift(int col, int row)
    {
-      col = col;
-      row = row;
+      this.col = col;
+      this.row = row;
    }
 }

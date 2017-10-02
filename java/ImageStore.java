@@ -10,7 +10,6 @@ final class ImageStore
 {
    private final Map<String, List<PImage>> images;
    private final List<PImage> defaultImages;
-   public static final int COLOR_MASK = 0xffffff;
    ImageStore(PImage defaultImage)
    {
       this.images = new HashMap<>();

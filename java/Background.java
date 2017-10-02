@@ -15,12 +15,7 @@ final class Background
       this.images = images;
    }
 
-   private Entity createOre(Point position, int actionPeriod,
-                                  List<PImage> images)
-   {
-      return new Entity(EntityKind.ORE, id, position, images, 0, 0,
-              actionPeriod, 0);
-   }
+
    public PImage getCurrentImage()
    {
       if (this instanceof Background)
