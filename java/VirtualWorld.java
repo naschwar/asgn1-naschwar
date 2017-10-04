@@ -130,7 +130,7 @@ public final class VirtualWorld
       try
       {
          Scanner in = new Scanner(new File(filename));
-         Functions.loadImages(in, imageStore, screen);
+         ImageStore.loadImages(in, imageStore, screen);
       }
       catch (FileNotFoundException e)
       {
@@ -144,7 +144,7 @@ public final class VirtualWorld
       try
       {
          Scanner in = new Scanner(new File(filename));
-         Functions.load(in, world, imageStore);
+         ImageStore.load(in, world, imageStore);
       }
       catch (FileNotFoundException e)
       {
